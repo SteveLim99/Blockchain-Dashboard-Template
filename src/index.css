@@ -14,11 +14,13 @@ code {
 
 .wrapper {
   display: flex;
-  width: 200px;
+  width: 12vw;
+  height: 100vh;
+  float: left;
 }
 
 .wrapper .sidebar {
-  width: 200px;
+  width: 12vw;
   height: 100vh;
   z-index: 999;
   background: #00152a;
@@ -39,4 +41,10 @@ code {
 
 .wrapper .sidebar ul li:hover {
   background-color: #1890ff;
+}
+
+.root {
+  position: relative;
+  float: right;
+  width: 88vw;
 }
