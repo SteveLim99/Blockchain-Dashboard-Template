@@ -10,7 +10,7 @@ const Styles = styled.div`
   }
 
   .header {
-    width: 90%;
+    width: 75%;
     background-size: cover;
     color: white;
     font-size: 60px;
@@ -19,16 +19,45 @@ const Styles = styled.div`
   }
 `;
 
-export const Header = props => (
-  <Styles>
-    <Jumbotron
-      style={{
-        backgroundImage: `url(${jumbotronImage})`,
-        padding: 135
-      }}
-      fluid
-    >
-      <h1 className="header">{props.title}</h1>
-    </Jumbotron>
-  </Styles>
-);
+export class Header extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    var title = this.props.title;
+    if (
+      title == "Advance Search" ||
+      title == "Upload" ||
+      title == "Document List"
+    ) {
+      return (
+        <Styles>
+          <Jumbotron
+            style={{
+              backgroundImage: `url(${jumbotronImage})`,
+              padding: 20
+            }}
+            fluid
+          >
+            <h1 className="header">{title}</h1>
+          </Jumbotron>
+        </Styles>
+      );
+    } else {
+      return (
+        <Styles>
+          <Jumbotron
+            style={{
+              backgroundImage: `url(${jumbotronImage})`,
+              padding: 80
+            }}
+            fluid
+          >
+            <h1 className="header">{title}</h1>
+          </Jumbotron>
+        </Styles>
+      );
+    }
+  }
+}

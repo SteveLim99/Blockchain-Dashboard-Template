@@ -43,7 +43,7 @@ const Styles = styled.div`
 export const Home = () => (
   <Styles>
     <div>
-      <Header title="ArchiLens" />
+      <Header title="ARchiLens" />
       <div className="menuCardsRow">
         <div
           className="menuCards"
