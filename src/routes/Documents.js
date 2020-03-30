@@ -12,7 +12,9 @@ export class Documents extends Component {
     return (
       <div>
         <Header title="Document List" />
-        <DocumentTable docs={documents} />
+        <div style={{margin: 20}}>
+          <DocumentTable docs={documents} />
+        </div>
       </div>
     );
   }
