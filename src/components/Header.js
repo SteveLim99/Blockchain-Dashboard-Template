@@ -5,12 +5,11 @@ import jumbotronImage from "../images/skyline.jpg";
 
 const Styles = styled.div`
   .jumbotron {
-    margin-top: 0px;
-    width: 100vw;
+    width: 100%;
   }
 
   .header {
-    width: 75%;
+    width: 100%;
     background-size: cover;
     color: white;
     font-size: 60px;
@@ -36,7 +35,6 @@ export class Header extends Component {
           <Jumbotron
             style={{
               backgroundImage: `url(${jumbotronImage})`,
-              padding: 20
             }}
             fluid
           >
@@ -50,7 +48,6 @@ export class Header extends Component {
           <Jumbotron
             style={{
               backgroundImage: `url(${jumbotronImage})`,
-              padding: 80
             }}
             fluid
           >
