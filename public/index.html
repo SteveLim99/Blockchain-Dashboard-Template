@@ -34,23 +34,28 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div class="wrapper">
-      <nav class="sidebar">
-        <h2><a href="/" style="color:white" title="Home">ArchiLens</a></h2>
-        <ul class="list-unstyled components">
-          <li class="active">
-            <a href="/documents" style="color:white;">Document List</a>
-          </li>
-          <li>
-            <a href="/search" style="color:white;">Advance Search</a>
-          </li>
-          <li>
-            <a href="/upload" style="color:white;">Upload</a>
-          </li>
-        </ul>
-      </nav>
+    <div style="width: 100vw;">
+      <div class="wrapper">
+        <ul class="sidebar">
+          <h2><a href="/" style="color:white" title="Home">ArchiLens</a></h2>
+          <ul class="list-group list-group-flush">
+            <li class="nav-item">
+              <a href="/" class="nav-link active" style="color: white">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="/documents" class="nav-link active" style="color:white;">Document List</a>
+            </li>
+            <li class="nav-item">
+              <a href="/search" class="nav-link active" style="color:white;">Advance Search</a>
+            </li>
+            <li class="nav-item">
+              <a href="/upload" class="nav-link active" style="color:white;">Upload</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="root" id="root"></div>
     </div>
-    <div id="root"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
