@@ -21,32 +21,29 @@ export class Forms extends Component {
         <Form className="form-container">
           <Form.Row>
             <Form.Group as={Col} md="4" controlId="validationCustom01">
-              <Form.Label>First name</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                placeholder="First name"
-                defaultValue="Mark"
-              />
+              <Form.Label>Label</Form.Label>
+              <Form.Control required type="text" placeholder="File Name" />
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
-            <Form.Group as={Col} md="4" controlId="validationCustom02">
-              <Form.Label>Last name</Form.Label>
+            <Form.Group as={Col} md="3" controlId="validationCustom02">
+              <Form.Label>Version</Form.Label>
               <Form.Control
                 required
-                type="text"
-                placeholder="Last name"
-                defaultValue="Otto"
+                type="number"
+                placeholder="File Version"
+                defaultValue="0"
               />
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
           </Form.Row>
           <Form.Group controlId="exampleForm.ControlTextarea1">
-            <Form.Label>Example textarea</Form.Label>
+            <Form.Label>File Content</Form.Label>
             <Form.Control as="textarea" rows="3" />
           </Form.Group>
-          <Form.File id="custom-file" label="Custom file input" custom />
-          <Button variant="primary" type="submit" onClick>
+          <Form.Group>
+            <Form.File id="custom-file" label="Custom file input" custom />
+          </Form.Group>
+          <Button variant="primary" type="submit">
             Submit
           </Button>
         </Form>

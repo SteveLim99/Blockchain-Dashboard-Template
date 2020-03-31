@@ -18,8 +18,7 @@ export default class App extends Component {
       web3: null,
       accounts: null,
       contract: null,
-      documents: [],
-      test: ""
+      documents: []
     };
   }
 
@@ -27,18 +26,20 @@ export default class App extends Component {
     const contract = this.state.contract;
     var docs = [];
     try {
-      const numberOfFiles = await contract.methods.getLatestFileIndex();
+      const numberOfFiles = await contract.methods.getLatestFileIndex().call();
       for (var i = 1; i <= numberOfFiles; i++) {
         var file = {
           fileName: "",
           fileVersion: "",
           fileContent: "",
-          fileUrl: ""
+          fileUrl: "",
+          fileNameAndVersion: ""
         };
         file.fileUrl = await contract.methods.getHash(i).call();
         file.fileVersion = await contract.methods.getFileVersion(i).call();
         file.fileName = await contract.methods.getFileName(i).call();
         file.fileContent = await contract.methods.getFileContent(i).call();
+        file.fileNameAndVersion = file.fileName + "_" + file.fileVersion;
         docs.push(file);
       }
       return docs;
@@ -61,11 +62,10 @@ export default class App extends Component {
       this.setState({
         web3: web3,
         accounts: account,
-        contract: instance,
-        test: "wtv"
+        contract: instance
       });
       this.setState({
-        docs: await this.getAllFiles()
+        documents: await this.getAllFiles()
       });
     } catch (error) {
       alert(
@@ -76,6 +76,9 @@ export default class App extends Component {
   };
 
   render() {
+    if (!this.state.web3) {
+      return <div>Loading Web3, accounts, and contract...</div>;
+    }
     return (
       <React.Fragment>
         <Layout title="Test">
@@ -85,35 +88,28 @@ export default class App extends Component {
               <Route
                 exact
                 path="/documents"
-                render={props => (
-                  <Documents
-                    docs={[
-                      {
-                        fileName: "test1",
-                        fileVersion: "1",
-                        fileContent: "testing1",
-                        fileUrl: "https1"
-                      },
-                      {
-                        fileName: "test2",
-                        fileVersion: "2",
-                        fileContent: "testing2",
-                        fileUrl: "https2"
-                      },
-                      {
-                        fileName: "test3",
-                        fileVersion: "3",
-                        fileContent: "testing3",
-                        fileUrl: "https3"
-                      }
-                    ]}
-                    test={this.state.test}
+                render={() => (
+                  <Documents docs={this.state.documents} isAuthed={true} />
+                )}
+              />
+              <Route
+                exact
+                path="/search"
+                render={() => (
+                  <Search docs={this.state.documents} isAuthed={true} />
+                )}
+              />
+              <Route
+                exact
+                path="/upload"
+                render={() => (
+                  <Upload
+                    accounts={this.state.accounts}
+                    contract={this.state.contract}
                     isAuthed={true}
                   />
                 )}
               />
-              <Route exact path="/search" component={Search} />
-              <Route exact path="/upload" component={Upload} />
               <Route component={NotFound} />
             </Switch>
           </Router>
