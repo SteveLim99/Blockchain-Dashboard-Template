@@ -1,63 +1,56 @@
 import React, { Component } from "react";
 import { Form, Col, Button } from "react-bootstrap";
+import styled from "styled-components";
+
+const Styles = styled.div`
+  .form-container {
+    background-color: #f0f2f5;
+    padding: 2%;
+    border-radius: 10px;
+  }
+`;
 
 export class Forms extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     return (
-      <Form>
-        <Form.Row>
-          <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
+      <Styles>
+        <Form className="form-container">
+          <Form.Row>
+            <Form.Group as={Col} md="4" controlId="validationCustom01">
+              <Form.Label>First name</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="First name"
+                defaultValue="Mark"
+              />
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md="4" controlId="validationCustom02">
+              <Form.Label>Last name</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="Last name"
+                defaultValue="Otto"
+              />
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            </Form.Group>
+          </Form.Row>
+          <Form.Group controlId="exampleForm.ControlTextarea1">
+            <Form.Label>Example textarea</Form.Label>
+            <Form.Control as="textarea" rows="3" />
           </Form.Group>
-
-          <Form.Group as={Col} controlId="formGridPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
-          </Form.Group>
-        </Form.Row>
-
-        <Form.Group controlId="formGridAddress1">
-          <Form.Label>Address</Form.Label>
-          <Form.Control placeholder="1234 Main St" />
-        </Form.Group>
-
-        <Form.Group controlId="formGridAddress2">
-          <Form.Label>Address 2</Form.Label>
-          <Form.Control placeholder="Apartment, studio, or floor" />
-        </Form.Group>
-
-        <Form.Row>
-          <Form.Group as={Col} controlId="formGridCity">
-            <Form.Label>City</Form.Label>
-            <Form.Control />
-          </Form.Group>
-
-          <Form.Group as={Col} controlId="formGridState">
-            <Form.Label>State</Form.Label>
-            <Form.Control as="select" value="Choose...">
-              <option>Choose...</option>
-              <option>...</option>
-            </Form.Control>
-          </Form.Group>
-
-          <Form.Group as={Col} controlId="formGridZip">
-            <Form.Label>Zip</Form.Label>
-            <Form.Control />
-          </Form.Group>
-        </Form.Row>
-
-        <Form.Group id="formGridCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+          <Form.File id="custom-file" label="Custom file input" custom />
+          <Button variant="primary" type="submit" onClick>
+            Submit
+          </Button>
+        </Form>
+      </Styles>
     );
   }
 }

@@ -13,9 +13,9 @@ const Styles = styled.div`
   }
 
   .menuCards {
-    background: white;
+    background: #f0f2f5;
     box-shadow: 0px 10px 10px -7px grey;
-    width: 30%;
+    width: 40%;
     height: auto;
     margin: 0 2%;
     padding: 30px;
@@ -42,43 +42,41 @@ const Styles = styled.div`
 
 export const Home = () => (
   <Styles>
-      <div>
-       <Header title="ARchiLens" />
-        <div className="menuCardsRow">
-          <div
-            className="menuCards"
-            onClick={() => {
-              window.location.href = "/documents";
-            }}
-          >
-            <img src={require("../images/docs.png")} />
-            <div className="menuLabels">Documents List</div>
-          </div>
-          <div
-            className="menuCards"
-            onClick={() => {
-              window.location.href = "/search";
-            }}
-          >
-            <img src={require("../images/search.png")} />
-            <div className="menuLabels">Advance search</div>
-          </div>
-          <div
-            className="menuCards"
-            onClick={() => {
-              window.location.href = "/upload";
-            }}
-          >
-            <img src={require("../images/upload.png")} />
-            <div className="menuLabels">Upload</div>
-          </div>
-        </div>
-        <p className="footerText">
-          Find out More:{" "}
-          <a href="http://students.cs.ucl.ac.uk/2019/group38/index.html">
-            http://students.cs.ucl.ac.uk/2019/group38/index.html
-          </a>
-        </p>
+    <Header title="ARchiLens" />
+    <div className="menuCardsRow">
+      <div
+        className="menuCards"
+        onClick={() => {
+          window.location.href = "/documents";
+        }}
+      >
+        <img src={require("../images/docs.png")} />
+        <div className="menuLabels">Documents List</div>
       </div>
+      <div
+        className="menuCards"
+        onClick={() => {
+          window.location.href = "/search";
+        }}
+      >
+        <img src={require("../images/search.png")} />
+        <div className="menuLabels">Advance search</div>
+      </div>
+      <div
+        className="menuCards"
+        onClick={() => {
+          window.location.href = "/upload";
+        }}
+      >
+        <img src={require("../images/upload.png")} />
+        <div className="menuLabels">Upload</div>
+      </div>
+    </div>
+    <p className="footerText">
+      Find out More:{" "}
+      <a href="http://students.cs.ucl.ac.uk/2019/group38/index.html">
+        http://students.cs.ucl.ac.uk/2019/group38/index.html
+      </a>
+    </p>
   </Styles>
 );
