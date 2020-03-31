@@ -32,14 +32,12 @@ export default class App extends Component {
           fileName: "",
           fileVersion: "",
           fileContent: "",
-          fileUrl: "",
-          fileNameAndVersion: ""
+          fileUrl: ""
         };
         file.fileUrl = await contract.methods.getHash(i).call();
         file.fileVersion = await contract.methods.getFileVersion(i).call();
         file.fileName = await contract.methods.getFileName(i).call();
         file.fileContent = await contract.methods.getFileContent(i).call();
-        file.fileNameAndVersion = file.fileName + "_" + file.fileVersion;
         docs.push(file);
       }
       return docs;

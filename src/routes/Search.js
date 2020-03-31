@@ -38,22 +38,22 @@ export class Search extends Component {
   };
 
   handleSubmit = async e => {
-    const form = e.currentTarget;
-    if (form.checkValidity() === false) {
-      e.preventDefault();
-      e.stopPropagation();
-      const files = this.props.docs;
-      var filteredFiles = [];
-      let searchedNameAndVersion =
-        this.state.searchName + "@" + this.state.searchVersion;
-      for (let file in files) {
-        var curr = files[file];
-        if (curr.fileNameAndVersion === searchedNameAndVersion) {
-          filteredFiles.push(curr);
-        }
+    e.preventDefault();
+    const form = document.getElementsByClassName("form-container");
+    const files = this.props.docs;
+    var filteredFiles = [];
+    const name = this.state.searchName;
+    const version = this.state.searchVersion;
+    for (let file in files) {
+      var curr = files[file];
+      if (
+        (curr.fileName.indexOf(name) > -1) &
+        (curr.fileVersion.indexOf(version) > -1)
+      ) {
+        filteredFiles.push(curr);
       }
-      this.setState({ filteredDocs: filteredFiles });
     }
+    this.setState({ filteredDocs: filteredFiles });
   };
 
   render() {
@@ -82,12 +82,11 @@ export class Search extends Component {
               />
             </Form.Group>
           </Form.Row>
-          <Button variant="primary" type="submit" onClick={this.handleSubmit}>
-            Submit
+          <Button variant="primary" type="button" onClick={this.handleSubmit}>
+            Search
           </Button>
         </Form>
         <DocumentTable docs={this.state.filteredDocs} />
-        <p>{this.state.filteredDocs}</p>
       </Styles>
     );
   }
