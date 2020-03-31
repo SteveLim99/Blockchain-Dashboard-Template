@@ -42,29 +42,39 @@ export class Upload extends Component {
   };
 
   handleSubmit = async e => {
-    e.preventDefault();
-    const { fileName, fileVersion, fileContent, uploadedFile } = this.state;
-    const { contract, accounts } = this.props;
+    const form = document.querySelector("#form-group");
+    if (form.checkValidity()) {
+      e.preventDefault();
+      const { fileName, fileVersion, fileContent, uploadedFile } = this.state;
+      const { contract, accounts } = this.props;
 
-    // Uploading file to blob storage and obtaining download link as response
-    // Response will be added to blockchain
-    const formData = new FormData();
-    formData.append("file", uploadedFile);
-    try {
-      var res = await axios.post("http://localhost:9000/upload", formData, {});
-      // Uploading the file URL and the rest of the data to the blockchain
-      if (res.status === 200) {
-        try {
-          const fileUrl = res.data;
-          await contract.methods
-            .set(fileUrl, fileVersion, fileName, fileContent)
-            .send({ from: accounts[0] });
-        } catch (error) {
-          alert("Blockchain Submission Error, check console for error message");
+      // Uploading file to blob storage and obtaining download link as response
+      // Response will be added to blockchain
+      const formData = new FormData();
+      formData.append("file", uploadedFile);
+      try {
+        var res = await axios.post(
+          "http://localhost:9000/upload",
+          formData,
+          {}
+        );
+        // Uploading the file URL and the rest of the data to the blockchain
+        if (res.status === 200) {
+          try {
+            const fileUrl = res.data;
+            await contract.methods
+              .set(fileUrl, fileVersion, fileName, fileContent)
+              .send({ from: accounts[0] });
+          } catch (error) {
+            alert(
+              "Blockchain Submission Error, check console for error message"
+            );
+          }
         }
+      } catch (error) {
+        alert("File submission error, check console for error message");
       }
-    } catch (error) {
-      alert("File submission error, check console for error message");
+      form.reset();
     }
   };
 
@@ -72,7 +82,7 @@ export class Upload extends Component {
     return (
       <Styles>
         <Header title="Upload" />
-        <Form className="form-container">
+        <Form className="form-container" id="form-group">
           <Form.Row>
             <Form.Group
               as={Col}
