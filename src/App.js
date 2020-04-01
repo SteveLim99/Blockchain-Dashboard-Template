@@ -103,6 +103,7 @@ export default class App extends Component {
                   <Upload
                     accounts={this.state.accounts}
                     contract={this.state.contract}
+                    docs={this.state.documents}
                     isAuthed={true}
                   />
                 )}
