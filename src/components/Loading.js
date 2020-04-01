@@ -2,8 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 const Styles = styled.div`
-  .logo-container {
+
+  .loading {
     display: none;
+    margin-top: 10px;
+  }
+
+  .logo-container {
     justify-content: center;
     align-items: center;
   }
@@ -14,6 +19,7 @@ const Styles = styled.div`
     border-radius: 50%;
     width: 30px;
     height: 30px;
+    margin: 80%;
     animation: spin 0.25s linear infinite;
   }
 
@@ -30,12 +36,12 @@ const Styles = styled.div`
 export class Loading extends React.Component {
   constructor(props) {
     super(props);
-    this.myRef = React.createRef();
   }
-  render() {
+
+render() {
     return (
       <Styles>
-        <div ref={this.myRef}>
+        <div className="loading" ref={this.myRef} id="loading">
           <div className="logo-container">
             <img
               src={require("../images/avanade.jpg")}

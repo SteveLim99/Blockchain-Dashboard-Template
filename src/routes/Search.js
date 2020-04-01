@@ -41,9 +41,10 @@ export class Search extends Component {
 
   handleSubmit = async e => {
     //Reference to Loading element in line 93
-    const loader = this.loader.current;
-    //Returned as undefined
-    console.log(loader.style);
+    const loader = document.getElementById('loading');
+    loader.style.display = "flex";
+    
+
     e.preventDefault();
     const files = this.props.docs;
     var filteredFiles = [];
