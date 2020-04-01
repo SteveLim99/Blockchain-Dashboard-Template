@@ -74,7 +74,7 @@ export default class App extends Component {
 
   render() {
     if (!this.state.web3) {
-      console.log("Web3, accounts, and contract...");
+      console.log("Loading Web3, accounts, and contract...");
     }
     return (
       <React.Fragment>
