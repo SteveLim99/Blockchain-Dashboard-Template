@@ -3,6 +3,7 @@ import { Header } from "../components/Header";
 import { DocumentTable } from "../components/DocumentTable";
 import { Form, Col, Button } from "react-bootstrap";
 import styled from "styled-components";
+import { Loading } from "../components/Loading";
 
 const Styles = styled.div`
   .form-container {
@@ -19,6 +20,7 @@ const Styles = styled.div`
 export class Search extends Component {
   constructor(props) {
     super(props);
+    this.loader = React.createRef();
     this.state = {
       searchName: "",
       searchVersion: "",
@@ -38,6 +40,10 @@ export class Search extends Component {
   };
 
   handleSubmit = async e => {
+    //Reference to Loading element in line 93
+    const loader = this.loader.current;
+    //Returned as undefined
+    console.log(loader.style);
     e.preventDefault();
     const files = this.props.docs;
     var filteredFiles = [];

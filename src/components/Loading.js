@@ -27,13 +27,26 @@ const Styles = styled.div`
   }
 `;
 
-export const Loading = () => (
-  <Styles>
-    <div className="logo-container">
-      <img src={require("../images/avanade.jpg")} alt="avanade.jpg missing" />
-    </div>
-    <div className="logo-container">
-      <div className="loader"></div>
-    </div>
-  </Styles>
-);
+export class Loading extends React.Component {
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+  }
+  render() {
+    return (
+      <Styles>
+        <div ref={this.myRef}>
+          <div className="logo-container">
+            <img
+              src={require("../images/avanade.jpg")}
+              alt="avanade.jpg missing"
+            />
+          </div>
+          <div className="logo-container">
+            <div className="loader"></div>
+          </div>
+        </div>
+      </Styles>
+    );
+  }
+}
