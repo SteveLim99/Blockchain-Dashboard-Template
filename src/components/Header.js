@@ -19,10 +19,6 @@ const Styles = styled.div`
 `;
 
 export class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     var title = this.props.title;
     if (
