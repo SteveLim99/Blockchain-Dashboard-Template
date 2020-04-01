@@ -13,6 +13,25 @@ const Styles = styled.div`
     width: 85%;
     margin-left: 150px;
   }
+
+  .loader {
+    display: none;
+    border: 5px solid whitesmoke;
+    border-top: 5px solid #007bff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-left:15px;
+    animation: spin 0.35s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
 `;
 
 export class Upload extends Component {
@@ -42,9 +61,11 @@ export class Upload extends Component {
   };
 
   handleSubmit = async e => {
+    const loader = document.getElementById("loading");
     const form = document.querySelector("#form-group");
     if (form.checkValidity()) {
       e.preventDefault();
+      loader.style.display = "flex";
       const { fileName, fileVersion, fileContent, uploadedFile } = this.state;
       const { contract, accounts } = this.props;
 
@@ -69,11 +90,14 @@ export class Upload extends Component {
             alert(
               "Blockchain Submission Error, check console for error message"
             );
+            loader.style.display = "none";
           }
         }
       } catch (error) {
         alert("File submission error, check console for error message");
+        loader.style.display = "none";
       }
+      loader.style.display = "none";
       form.reset();
     }
   };
@@ -130,11 +154,13 @@ export class Upload extends Component {
               feedback="You must agree before submitting."
             />
           </Form.Group>
-          <Button variant="primary" type="submit" onClick={this.handleSubmit}>
-            Submit
-          </Button>
+          <Form.Row>
+            <Button variant="primary" type="submit" onClick={this.handleSubmit}>
+              Submit
+            </Button>
+            <div className="loader" id="loading"></div>
+          </Form.Row>
         </Form>
-        <p></p>
       </Styles>
     );
   }
