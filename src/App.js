@@ -9,7 +9,6 @@ import { Upload } from "./routes/Upload";
 import { Documents } from "./routes/Documents";
 import { NotFound } from "./routes/NotFound";
 import { Layout } from "./components/Layout";
-import { Loading } from "./components/Loading";
 
 export default class App extends Component {
   constructor(props) {
@@ -75,7 +74,7 @@ export default class App extends Component {
 
   render() {
     if (!this.state.web3) {
-      return <Loading />;
+      console.log("Web3, accounts, and contract...");
     }
     return (
       <React.Fragment>

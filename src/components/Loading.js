@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Styles = styled.div`
   .logo-container {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
   }
