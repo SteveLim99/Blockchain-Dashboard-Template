@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { Button } from "react-bootstrap";
+import React from "react";
 import { Header } from "../components/Header";
 import styled from "styled-components";
 
@@ -50,7 +49,7 @@ export const Home = () => (
           window.location.href = "/documents";
         }}
       >
-        <img src={require("../images/docs.png")} />
+        <img src={require("../images/docs.png")} alt="docs.png missing" />
         <div className="menuLabels">Documents List</div>
       </div>
       <div
@@ -59,7 +58,7 @@ export const Home = () => (
           window.location.href = "/search";
         }}
       >
-        <img src={require("../images/search.png")} />
+        <img src={require("../images/search.png")} alt="search.png missing" />
         <div className="menuLabels">Advance search</div>
       </div>
       <div
@@ -68,7 +67,7 @@ export const Home = () => (
           window.location.href = "/upload";
         }}
       >
-        <img src={require("../images/upload.png")} />
+        <img src={require("../images/upload.png")} alt="upload.png missing" />
         <div className="menuLabels">Upload</div>
       </div>
     </div>

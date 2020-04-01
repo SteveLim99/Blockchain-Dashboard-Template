@@ -3,7 +3,6 @@ import { Header } from "../components/Header";
 import { DocumentTable } from "../components/DocumentTable";
 import { Form, Col, Button } from "react-bootstrap";
 import styled from "styled-components";
-import { Loading } from "../components/Loading";
 
 const Styles = styled.div`
   .form-container {
@@ -39,12 +38,7 @@ export class Search extends Component {
   };
 
   handleSubmit = async e => {
-    const formLock = document.querySelector("#form-lock");
-    const formLoad = document.querySelector("#form-loading");
     e.preventDefault();
-    // const form = document.getElementsByClassName("form-container");
-    // console.log(form.checkValidity())
-    formLock.css("display", "block");
     const files = this.props.docs;
     var filteredFiles = [];
     const name = this.state.searchName;
@@ -90,7 +84,6 @@ export class Search extends Component {
           <Button variant="primary" type="button" onClick={this.handleSubmit}>
             Search
           </Button>
-          <Loading id="loader" />
         </Form>
         <DocumentTable docs={this.state.filteredDocs} />
       </Styles>

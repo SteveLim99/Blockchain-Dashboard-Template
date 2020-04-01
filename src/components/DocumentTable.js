@@ -1,12 +1,8 @@
 import React, { Component } from "react";
-import { Table, Skeleton } from "antd";
+import { Table } from "antd";
 import "antd/dist/antd.css";
 
 export class DocumentTable extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const columns = [
       {

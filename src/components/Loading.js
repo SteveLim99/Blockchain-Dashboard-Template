@@ -30,7 +30,7 @@ const Styles = styled.div`
 export const Loading = () => (
   <Styles>
     <div className="logo-container">
-      <img src={require("../images/avanade.jpg")} />
+      <img src={require("../images/avanade.jpg")} alt="avanade.jpg missing" />
     </div>
     <div className="logo-container">
       <div className="loader"></div>

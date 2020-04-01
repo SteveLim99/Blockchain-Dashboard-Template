@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Header } from "../components/Header";
-import styled from "styled-components";
 import { DocumentTable } from "../components/DocumentTable";
 
 export class Documents extends Component {
