@@ -59,36 +59,38 @@ export class Search extends Component {
     return (
       <Styles>
         <div>
-          <Header title="Advance Search" />
-          <Form className="form-container">
-            <Form.Row>
-              <Form.Group as={Col} controlId="search-name">
-                <Form.Label>File Name</Form.Label>
-                <Form.Control
-                  required
-                  type="text"
-                  placeholder="Enter file name"
-                  onChange={this.handleChanges}
-                />
-              </Form.Group>
+          <div>
+            <Header title="Advance Search" />
+            <Form className="form-container">
+              <Form.Row>
+                <Form.Group as={Col} controlId="search-name">
+                  <Form.Label>File Name</Form.Label>
+                  <Form.Control
+                    required
+                    type="text"
+                    placeholder="Enter file name"
+                    onChange={this.handleChanges}
+                  />
+                </Form.Group>
 
-              <Form.Group as={Col} controlId="search-version">
-                <Form.Label>File Version</Form.Label>
-                <Form.Control
-                  required
-                  type="number"
-                  placeholder="Enter file version"
-                  onChange={this.handleChanges}
-                />
-              </Form.Group>
-            </Form.Row>
-            <Button variant="primary" type="button" onClick={this.handleSubmit}>
-              Search
-            </Button>
-          </Form>
-        </div>
-        <div style={{ margin: 20 }}>
-          <DocumentTable docs={this.state.filteredDocs} />
+                <Form.Group as={Col} controlId="search-version">
+                  <Form.Label>File Version</Form.Label>
+                  <Form.Control
+                    required
+                    type="number"
+                    placeholder="Enter file version"
+                    onChange={this.handleChanges}
+                  />
+                </Form.Group>
+              </Form.Row>
+              <Button variant="primary" type="button" onClick={this.handleSubmit}>
+                Search
+              </Button>
+            </Form>
+          </div>
+          <div style={{ margin: 20 }}>
+            <DocumentTable docs={this.state.filteredDocs} />
+          </div>
         </div>
       </Styles>
     );
