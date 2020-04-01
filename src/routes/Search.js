@@ -39,8 +39,8 @@ export class Search extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    const form = document.getElementsByClassName("form-container");
-    console.log(form.checkValidity());
+    // const form = document.getElementsByClassName("form-container");
+    // console.log(form.checkValidity())
     const files = this.props.docs;
     var filteredFiles = [];
     const name = this.state.searchName;

@@ -8,14 +8,6 @@ export class DocumentTable extends Component {
   }
 
   render() {
-    const { loading } = this.props;
-    if (loading) {
-      return (
-        <div style={{ padding: "30px" }}>
-          <Skeleton active />
-        </div>
-      );
-    }
     const columns = [
       {
         title: "File Name",
@@ -33,8 +25,8 @@ export class DocumentTable extends Component {
       },
       {
         title: "Attached File",
-        dataIndex: "fileUrl",
-        render: a => <a href={a.fileUrl}>Download File</a>
+        dataIndex: "",
+        render: obj => <a href={obj.fileUrl}>Download File</a>
       },
       {
         title: "File Content",

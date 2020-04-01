@@ -9,7 +9,7 @@ import { Upload } from "./routes/Upload";
 import { Documents } from "./routes/Documents";
 import { NotFound } from "./routes/NotFound";
 import { Layout } from "./components/Layout";
-import { Header } from "./components/Header";
+import { Loading } from "./components/Loading";
 
 export default class App extends Component {
   constructor(props) {
@@ -75,7 +75,7 @@ export default class App extends Component {
 
   render() {
     if (!this.state.web3) {
-      return <div>Loading Web3, accounts, and contract...</div>;
+      return <Loading />;
     }
     return (
       <React.Fragment>
