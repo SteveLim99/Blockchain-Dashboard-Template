@@ -60,6 +60,19 @@ export class Upload extends Component {
     }
   };
 
+  checkExist = (uploadName, uploadVersion) => {
+    const docsList = this.props.docs;
+    for (var docs in docsList) {
+      var curr = docsList[docs];
+      if (curr.fileName === uploadName) {
+        if (curr.fileVersion === uploadVersion) {
+          return false;
+        }
+      }
+    }
+    return true;
+  };
+
   handleSubmit = async e => {
     const loader = document.getElementById("loading");
     const form = document.querySelector("#form-group");
@@ -67,35 +80,40 @@ export class Upload extends Component {
       e.preventDefault();
       loader.style.display = "flex";
       const { fileName, fileVersion, fileContent, uploadedFile } = this.state;
-      const { contract, accounts } = this.props;
-
-      // Uploading file to blob storage and obtaining download link as response
-      // Response will be added to blockchain
-      const formData = new FormData();
-      formData.append("file", uploadedFile);
-      try {
-        var res = await axios.post(
-          "http://localhost:9000/upload",
-          formData,
-          {}
-        );
-        // Uploading the file URL and the rest of the data to the blockchain
-        if (res.status === 200) {
-          try {
-            const fileUrl = res.data;
-            await contract.methods
-              .set(fileUrl, fileVersion, fileName, fileContent)
-              .send({ from: accounts[0] });
-          } catch (error) {
-            alert(
-              "Blockchain Submission Error, check console for error message"
-            );
-            loader.style.display = "none";
+      if (this.checkExist(fileName, fileVersion)) {
+        const { contract, accounts } = this.props;
+        // Uploading file to blob storage and obtaining download link as response
+        // Response will be added to blockchain
+        const formData = new FormData();
+        formData.append("file", uploadedFile);
+        try {
+          var res = await axios.post(
+            "http://localhost:9000/upload",
+            formData,
+            {}
+          );
+          // Uploading the file URL and the rest of the data to the blockchain
+          if (res.status === 200) {
+            try {
+              const fileUrl = res.data;
+              await contract.methods
+                .set(fileUrl, fileVersion, fileName, fileContent)
+                .send({ from: accounts[0] });
+            } catch (error) {
+              alert(
+                "Blockchain Submission Error, check console for error message"
+              );
+              loader.style.display = "none";
+            }
           }
+        } catch (error) {
+          alert("File submission error, check console for error message");
+          loader.style.display = "none";
         }
-      } catch (error) {
-        alert("File submission error, check console for error message");
-        loader.style.display = "none";
+      } else {
+        alert(
+          "A file under the same name has the same file version. Please change the file version!"
+        );
       }
       loader.style.display = "none";
       form.reset();
