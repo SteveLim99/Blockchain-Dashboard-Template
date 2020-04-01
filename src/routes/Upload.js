@@ -16,12 +16,12 @@ const Styles = styled.div`
 
   .loader {
     display: none;
-    border: 5px solid whitesmoke;
-    border-top: 5px solid #007bff;
+    border: 3px solid whitesmoke;
+    border-top: 3px solid #007bff;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    margin-left:15px;
+    width: 33px;
+    height: 33px;
+    margin-left:20px;
     animation: spin 0.35s linear infinite;
   }
 
