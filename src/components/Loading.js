@@ -34,11 +34,7 @@ const Styles = styled.div`
 `;
 
 export class Loading extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-render() {
+  render() {
     return (
       <Styles>
         <div className="loading" ref={this.myRef} id="loading">

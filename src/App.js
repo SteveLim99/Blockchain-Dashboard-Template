@@ -9,7 +9,6 @@ import { Upload } from "./routes/Upload";
 import { Documents } from "./routes/Documents";
 import { NotFound } from "./routes/NotFound";
 import { Layout } from "./components/Layout";
-import { Loading } from "./components/Loading";
 
 export default class App extends Component {
   constructor(props) {
