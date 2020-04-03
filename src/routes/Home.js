@@ -36,6 +36,7 @@ const Styles = styled.div`
   .footerText {
     text-align: center;
     font-size: small;
+    margin-top: 425px;
   }
 `;
 
